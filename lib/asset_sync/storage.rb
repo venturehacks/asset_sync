@@ -192,6 +192,11 @@ module AssetSync
           :expires => CGI.rfc1123_date(Time.now + one_year)
         })
       end
+      
+      file.merge!({
+        :cache_control => "public, max-age=31536000",
+        :expires => CGI.rfc1123_date(Time.now + one_year)
+      })
 
       file = bucket.files.create( file ) unless ignore
     end
