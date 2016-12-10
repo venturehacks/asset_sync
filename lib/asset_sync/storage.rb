@@ -187,14 +187,12 @@ module AssetSync
 
       if config.aws? && config.aws_rrs?
         file.merge!({
-          :storage_class => 'REDUCED_REDUNDANCY',
-          :cache_control => "public, max-age=31536000",
-          :expires => CGI.rfc1123_date(Time.now + one_year)
+          :storage_class => 'REDUCED_REDUNDANCY'
         })
       end
       
       file.merge!({
-        :cache_control => "public, max-age=31536000",
+        :cache_control => "public, max-age=#{one_year}",
         :expires => CGI.rfc1123_date(Time.now + one_year)
       })
 
