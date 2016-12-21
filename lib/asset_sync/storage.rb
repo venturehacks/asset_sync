@@ -194,7 +194,7 @@ module AssetSync
       file.merge!({
         :cache_control => "public, max-age=#{one_year}",
         :expires => CGI.rfc1123_date(Time.now + one_year),
-        :"access-control-allow-origin" => "*"
+        :access_control_allow_origin => "*"
       })
 
       file = bucket.files.create( file ) unless ignore
